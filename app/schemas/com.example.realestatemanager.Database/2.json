@@ -1,0 +1,290 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 2,
+    "identityHash": "04914961c255769afb838cd9655904f4",
+    "entities": [
+      {
+        "tableName": "property",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`property_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `agent_id` INTEGER NOT NULL, `type` TEXT, `price` REAL NOT NULL, `surface` REAL NOT NULL, `numberOfRooms` INTEGER NOT NULL, `description` TEXT, `mainPhotoUrl` TEXT, `isSold` INTEGER NOT NULL, `publicationDate` INTEGER NOT NULL, `saleDate` INTEGER NOT NULL, `locality` TEXT, `postalCode` TEXT, `formattedAddress` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "property_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "agentID",
+            "columnName": "agent_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "type",
+            "columnName": "type",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "price",
+            "columnName": "price",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "surface",
+            "columnName": "surface",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "numberOfRooms",
+            "columnName": "numberOfRooms",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "mainPhotoUrl",
+            "columnName": "mainPhotoUrl",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "isSold",
+            "columnName": "isSold",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "publicationDate",
+            "columnName": "publicationDate",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "saleDate",
+            "columnName": "saleDate",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "address.locality",
+            "columnName": "locality",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "address.postalCode",
+            "columnName": "postalCode",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "address.formattedAddress",
+            "columnName": "formattedAddress",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "property_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "photo_entity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`photo_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `property_id` INTEGER NOT NULL, `url` TEXT, `description` TEXT, FOREIGN KEY(`property_id`) REFERENCES `property`(`property_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "photo_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "propertyId",
+            "columnName": "property_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "url",
+            "columnName": "url",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "photo_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "property_id_index",
+            "unique": false,
+            "columnNames": [
+              "property_id"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `property_id_index` ON `${TABLE_NAME}` (`property_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "property",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "property_id"
+            ],
+            "referencedColumns": [
+              "property_id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "real_estate_agent",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`agent_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "agent_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "agent_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "point_of_interest",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`point_of_interest_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "point_of_interest_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "point_of_interest_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "property_point_of_interest_association",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`property_id` INTEGER NOT NULL, `point_of_interest_id` INTEGER NOT NULL, PRIMARY KEY(`property_id`, `point_of_interest_id`), FOREIGN KEY(`property_id`) REFERENCES `property`(`property_id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`point_of_interest_id`) REFERENCES `point_of_interest`(`point_of_interest_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "propertyId",
+            "columnName": "property_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "pointOfInterestId",
+            "columnName": "point_of_interest_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "property_id",
+            "point_of_interest_id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "assoc_property_id_index",
+            "unique": false,
+            "columnNames": [
+              "property_id"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `assoc_property_id_index` ON `${TABLE_NAME}` (`property_id`)"
+          },
+          {
+            "name": "assoc_point_of_interest_id_index",
+            "unique": false,
+            "columnNames": [
+              "point_of_interest_id"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `assoc_point_of_interest_id_index` ON `${TABLE_NAME}` (`point_of_interest_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "property",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "property_id"
+            ],
+            "referencedColumns": [
+              "property_id"
+            ]
+          },
+          {
+            "table": "point_of_interest",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "point_of_interest_id"
+            ],
+            "referencedColumns": [
+              "point_of_interest_id"
+            ]
+          }
+        ]
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '04914961c255769afb838cd9655904f4')"
+    ]
+  }
+}

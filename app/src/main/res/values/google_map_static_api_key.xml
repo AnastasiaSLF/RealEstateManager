@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="GOOGLE_MAP_STATIC_API_KEY" templateMergeStrategy="preserve" translatable="false">AIzaSyD0UgncHNJyeThbGOvcGTA21IbgWhcUH2k</string>
+
+</resources>

@@ -2,10 +2,8 @@ package com.example.realestatemanager.providers;
 
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.location.Location;
 import android.os.Looper;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -14,14 +12,12 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
-import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 
 import java.util.function.Consumer;
 
 import javax.inject.Inject;
 
-// TODO Refactoring
 public class
 LocationProvider {
 

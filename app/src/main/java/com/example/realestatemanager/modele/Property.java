@@ -177,7 +177,6 @@ public class Property {
         this.agent = agent;
     }
 
-    // ----------------------   INNERS  ----------------------- //
 
     public static class PointOfInterest {
         private int id;

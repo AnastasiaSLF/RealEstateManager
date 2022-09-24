@@ -47,7 +47,7 @@
 
         <provider
             android:authorities="@string/property_content_provider_authorities"
-            android:name=".provider.EstateProviderImp"
+            android:name=".provider.EstateContentProvider"
             />
     </application>
 

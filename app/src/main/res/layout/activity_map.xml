@@ -27,15 +27,6 @@
             />
 
 
-        <ImageButton
-            android:id="@+id/filterButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_margin="5dp"
-            android:paddingVertical="11dp"
-            android:src="@drawable/ic_baseline_filter_list_24"
-            />
 
     </FrameLayout>
 

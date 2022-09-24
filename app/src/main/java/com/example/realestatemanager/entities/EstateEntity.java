@@ -9,7 +9,6 @@ import androidx.room.PrimaryKey;
 
 import com.example.realestatemanager.modele.Property;
 
-
 @Entity(
         tableName = "property",
         ignoredColumns = {"photoList", "pointOfInterestNearby", "agent"})
@@ -75,6 +74,8 @@ public class EstateEntity extends Property {
         setMainPhotoUrl(parent.getMainPhotoUrl());
         address = new AddressEntity(parent.getAddress());
     }
+
+
 
     public static class AddressEntity extends Address {
 

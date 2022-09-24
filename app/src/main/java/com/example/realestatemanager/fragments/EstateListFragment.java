@@ -91,12 +91,9 @@ public class EstateListFragment extends Fragment {
                         });
     }
 
-
     @Override
     public void onConfigurationChanged(@NonNull @NotNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        // TODO Refactoring (use bundle args for the dialog dependencies instead of dismissing it on
-        //  configuration change)
         if (estateFilterDialog != null && estateFilterDialog.isAdded()) {
             estateFilterDialog.dismiss();
         }

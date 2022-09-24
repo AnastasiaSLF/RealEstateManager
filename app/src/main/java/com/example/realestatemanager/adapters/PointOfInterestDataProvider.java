@@ -8,7 +8,6 @@ import androidx.lifecycle.Transformations;
 
 import com.example.realestatemanager.dao.PointOfInterestDao;
 import com.example.realestatemanager.entities.PointOfInterestEntity;
-import com.example.realestatemanager.modele.Property;
 import com.example.realestatemanager.modele.Property.PointOfInterest;
 
 import com.example.realestatemanager.providers.PointOfInterestProvider;

@@ -2,7 +2,6 @@ package com.example.realestatemanager;
 
 import android.content.Context;
 
-import androidx.room.AutoMigration;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
@@ -37,7 +36,6 @@ import java.util.concurrent.Executors;
 
 )
 
-
 public abstract class Database extends RoomDatabase {
 
     private static Database instance;
@@ -65,11 +63,6 @@ public abstract class Database extends RoomDatabase {
         return instance;
     }
 
-    public static Database getTestInstance(Context context) {
-        return Room.inMemoryDatabaseBuilder(context, Database.class).build();
-    }
-
-    // INSERT DEMO DATA
 
     private static final Callback prepopulate =
             new Callback() {
@@ -80,7 +73,6 @@ public abstract class Database extends RoomDatabase {
                     Executors.newSingleThreadExecutor()
                             .execute(
                                     () -> {
-                                        // --------- ---------- AGENT ----------- ---------- //
                                         instance
                                                 .getRealEstateAgentDao()
                                                 .create(
@@ -93,7 +85,6 @@ public abstract class Database extends RoomDatabase {
                                                         new RealEstateAgentEntity(
                                                                 "Rebecca Orain"));
 
-                                        // --------- ---------- PROPERTIES ----------- ---------- //
                                         final int numberOfProperty = 14;
 
                                         final EstateEntity property1 = getPropertyFixturesModel();
@@ -111,7 +102,7 @@ public abstract class Database extends RoomDatabase {
                                         property2.setPublicationDate(LocalDate.now().minusMonths(4).toEpochDay());
                                         property2.setSaleDate(LocalDate.now().minusMonths(2).toEpochDay());
                                         property2.setMainPhotoUrl(
-                                                "https://www.worldelse.com/wp-content/uploads/2021/07/Rennes-copie-scaled.jpg");
+                                                "https://www.cnewyork.net/wp-content/uploads/2018/04/appartement-new-york.jpg");
 
                                         final EstateEntity property3 = getPropertyFixturesModel();
                                         property3.agentID = 3;
@@ -120,7 +111,7 @@ public abstract class Database extends RoomDatabase {
                                         property3.setType(Property.Type.PENTHOUSE);
                                         property3.address.setFormattedAddress("17202 73rd Avenue, NY");
                                         property3.setMainPhotoUrl(
-                                                "https://i.insider.com/62839eb74c7379001965152e?width=1000&format=jpeg&auto=webp");
+                                                "https://www.forbes.fr/wp-content/uploads/2019/06/jeffpenthouse-e1559909949281.jpg");
 
                                         final EstateEntity property4 = getPropertyFixturesModel();
                                         property4.agentID = 4;
@@ -142,7 +133,7 @@ public abstract class Database extends RoomDatabase {
                                         property5.setPublicationDate(LocalDate.now().minusMonths(10).toEpochDay());
                                         property5.setSaleDate(LocalDate.now().minusMonths(1).toEpochDay());
                                         property5.setMainPhotoUrl(
-                                                "https://www.ladresse-paris-tolbiac.com/office7/ladresseAc3-513/catalog/images/pr_p/1/0/2/1/5/4/3/2/10215432a.jpg");
+                                                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCFilOpMZXc6UwirWNHcIfZGGUCg2dprCiM6qWVU9RQ6GTinTOqcfT5_vcyLtWvCdCGBA&usqp=CAU");
 
                                         final EstateEntity property6 = getPropertyFixturesModel();
                                         property6.agentID = 1;
@@ -155,7 +146,7 @@ public abstract class Database extends RoomDatabase {
                                         property6.setSaleDate(LocalDate.now().minusMonths(3).toEpochDay());
                                         property6.setSold(true);
                                         property6.setMainPhotoUrl(
-                                                "https://www.easyspaces.fr/site/images/normal/OZ.C87.jpg");
+                                                "https://cloudfront-eu-central-1.images.arcpublishing.com/ipmgroup/Q5ZYL6TZABG7BEB6OKT4Z56RWU.jpg");
 
                                         final EstateEntity property7 = getPropertyFixturesModel();
                                         property7.agentID = 3;
@@ -270,7 +261,7 @@ public abstract class Database extends RoomDatabase {
                 false,
                 LocalDate.now().toEpochDay(),
                 0,
-                "https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F1026205392%2F0x0.jpg");
+                "https://3.bp.blogspot.com/-B1F-Urgb-60/Tw3kFMzMLEI/AAAAAAAACtc/WoZO5x_RaXQ/s1600/maison+design.jpg");
     }
 
     private static final String lorem =

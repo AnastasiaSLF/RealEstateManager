@@ -1,11 +1,9 @@
 package com.example.realestatemanager.repositories;
 
-import androidx.lifecycle.LiveData;
 
 import com.example.realestatemanager.modele.Photo;
 import com.example.realestatemanager.providers.PhotoProvider;
 
-import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 

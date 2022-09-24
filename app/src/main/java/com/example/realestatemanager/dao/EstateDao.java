@@ -2,6 +2,7 @@ package com.example.realestatemanager.dao;
 
 import android.database.Cursor;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -11,6 +12,7 @@ import androidx.room.Update;
 
 
 import com.example.realestatemanager.entities.EstateEntity;
+import com.example.realestatemanager.modele.Property;
 
 import java.util.List;
 

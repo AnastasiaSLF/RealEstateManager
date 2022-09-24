@@ -7,7 +7,6 @@ import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-
 import static androidx.room.ForeignKey.CASCADE;
 
 import com.example.realestatemanager.modele.Photo;

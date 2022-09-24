@@ -8,7 +8,6 @@ public class LoanSimulatorViewModel extends ViewModel {
 
     private LoanSimulatorDataBinding dataBinder = new LoanSimulatorDataBinding();
 
-
     public LoanSimulatorDataBinding getDataBinder() {
         return dataBinder;
     }

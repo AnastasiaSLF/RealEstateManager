@@ -10,14 +10,13 @@ import android.net.Uri;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-
 import com.example.realestatemanager.R;
 import com.example.realestatemanager.dao.EstateDao;
 import com.example.realestatemanager.di.EstateContentProviderEntry;
 
 import dagger.hilt.android.EntryPointAccessors;
 
-public class EstateProviderImp extends ContentProvider {
+public class EstateContentProvider extends ContentProvider {
 
     EstateDao propertyDao;
 
